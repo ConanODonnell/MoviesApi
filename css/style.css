@@ -1,0 +1,12 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  font-size: 1em;
+}
+ 
+div.repeat:nth-child(6n+1) {
+	clear: both;
+}
