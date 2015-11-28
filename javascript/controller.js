@@ -68,4 +68,23 @@ MovieListService, myMovieConfig) {
         function(error) { 
           console.log('error', error)
         });
+})
+
+.controller("MovieDetailsController", function($scope, $location, 
+  $routeParams, MovieListService, myMovieConfig) {
+
+  $scope.title = "Movie Details";
+  var id = $routeParams.movieId;
+  var url = myMovieConfig.moviesEndpoint + '/' + id + '?api_key=' + myMovieConfig.apiKey;
+  MovieListService.getList(url).then(
+    function(result){
+      $scope.movie = result.data;
+      }
+    ).catch(
+    function(error) {
+      $location.path('/error/' + error.data.status_message + '/' + error.status)
+    });
+
 });
+
+
